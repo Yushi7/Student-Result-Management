@@ -1,13 +1,10 @@
--- ============================================================
 --  Student Result Management System — Database Schema
 --  Database: student_result_db
 --  Normal Form: 3NF
--- ============================================================
 
 CREATE DATABASE IF NOT EXISTS student_result_db;
 USE student_result_db;
 
--- ── Users (authentication) ────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS users (
     user_id       INT AUTO_INCREMENT PRIMARY KEY,
     username      VARCHAR(50)  NOT NULL UNIQUE,
@@ -17,7 +14,6 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_username (username)
 );
 
--- ── Students ──────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS students (
     student_id  INT AUTO_INCREMENT PRIMARY KEY,
     user_id     INT          NOT NULL UNIQUE,
@@ -27,7 +23,6 @@ CREATE TABLE IF NOT EXISTS students (
     INDEX idx_email (email)
 );
 
--- ── Courses ───────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS courses (
     course_id   INT AUTO_INCREMENT PRIMARY KEY,
     course_name VARCHAR(100) NOT NULL,
@@ -36,7 +31,6 @@ CREATE TABLE IF NOT EXISTS courses (
     INDEX idx_course_code (course_code)
 );
 
--- ── Results ───────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS results (
     result_id   INT AUTO_INCREMENT PRIMARY KEY,
     student_id  INT            NOT NULL,
@@ -50,8 +44,6 @@ CREATE TABLE IF NOT EXISTS results (
     INDEX idx_student (student_id)
 );
 
--- ── Seed: Default Admin Account ───────────────────────────────────────────────
--- Password: admin123  (SHA-256 hash)
 INSERT IGNORE INTO users (username, password_hash, role)
 VALUES (
     'admin',
@@ -59,7 +51,7 @@ VALUES (
     'admin'
 );
 
--- ── Sample Data ───────────────────────────────────────────────────────────────
+"""Sample Data"""
 INSERT IGNORE INTO courses (course_name, course_code, credits) VALUES
     ('Data Structures & Algorithms', 'CS201', 4),
     ('Database Management Systems',  'CS301', 3),
