@@ -1,6 +1,4 @@
 """
-Student Result Management System
-=================================
 A multi-user academic result management system with role-based access control.
 Supports admin and student roles with secure login and CRUD operations.
 """
@@ -11,7 +9,6 @@ from auth import login, hash_password
 from admin import admin_menu
 from student import student_menu
 from db import get_connection
-
 
 def main():
     print("=" * 50)
@@ -38,7 +35,7 @@ def main():
                 print("Invalid credentials. Please try again.")
 
         elif choice == "2":
-            print("Goodbye!")
+            print("Goodbye")
             break
         else:
             print("Invalid choice.")
