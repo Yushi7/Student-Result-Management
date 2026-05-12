@@ -1,21 +1,15 @@
-"""
-auth.py — Authentication with hashed passwords
-"""
+# auth.py — Authentication with hashed passwords
 
 import hashlib
 from db import get_connection, close
-
 
 def hash_password(password: str) -> str:
     """Return SHA-256 hash of the given password."""
     return hashlib.sha256(password.encode()).hexdigest()
 
-
 def login(username: str, password: str):
-    """
-    Validate credentials against the database.
-    Returns user dict on success, None on failure.
-    """
+    # Validate credentials against the database & returns user dict on success, None on failure.
+    
     conn = get_connection()
     if not conn:
         return None
