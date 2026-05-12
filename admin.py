@@ -1,13 +1,8 @@
-"""
-admin.py — Admin role operations
-Includes: manage students, courses, grades, and view reports.
-"""
+# admin.py — Admin role operations
+# Roles includes: manage students, courses, grades, and view reports.
 
 from db import get_connection, close
 from auth import hash_password
-
-
-# ── Student Management ────────────────────────────────────────────────────────
 
 def add_student(name: str, email: str, username: str, password: str):
     conn = get_connection()
@@ -85,9 +80,6 @@ def delete_student(student_id: int):
     finally:
         close(conn, cursor)
 
-
-# ── Course Management ─────────────────────────────────────────────────────────
-
 def add_course(course_name: str, course_code: str, credits: int):
     conn = get_connection()
     if not conn:
@@ -124,9 +116,6 @@ def view_all_courses():
             print(f"{r['course_id']:<5} {r['course_code']:<10} {r['course_name']:<30} {r['credits']:<8}")
     finally:
         close(conn, cursor)
-
-
-# ── Grade Management ──────────────────────────────────────────────────────────
 
 def assign_grade(student_id: int, course_id: int, marks: float, grade: str):
     conn = get_connection()
@@ -177,9 +166,6 @@ def view_all_results():
             print(f"{r['student']:<20} {r['course_name']:<25} {r['course_code']:<10} {r['marks']:<8} {r['grade']:<6}")
     finally:
         close(conn, cursor)
-
-
-# ── Admin Menu ────────────────────────────────────────────────────────────────
 
 def admin_menu(user):
     while True:
