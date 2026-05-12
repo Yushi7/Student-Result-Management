@@ -5,7 +5,6 @@ Students can view their own results and profile only.
 
 from db import get_connection, close
 
-
 def get_student_id(user_id: int):
     """Fetch student_id from user_id."""
     conn = get_connection()
@@ -18,7 +17,6 @@ def get_student_id(user_id: int):
         return row[0] if row else None
     finally:
         close(conn, cursor)
-
 
 def view_my_results(user_id: int):
     conn = get_connection()
@@ -62,7 +60,6 @@ def view_my_results(user_id: int):
     finally:
         close(conn, cursor)
 
-
 def view_my_profile(user_id: int):
     conn = get_connection()
     if not conn:
@@ -88,7 +85,6 @@ def view_my_profile(user_id: int):
             print("Profile not found.")
     finally:
         close(conn, cursor)
-
 
 def student_menu(user):
     while True:
