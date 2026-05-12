@@ -1,6 +1,4 @@
-"""
-db.py — Database connection handler
-"""
+# db.py — Database connection handler
 
 import mysql.connector
 from mysql.connector import Error
@@ -13,9 +11,8 @@ DB_CONFIG = {
     "database": os.getenv("DB_NAME", "student_result_db"),
 }
 
-
 def get_connection():
-    """Return a new MySQL connection."""
+    # Return a new MySQL connection.
     try:
         conn = mysql.connector.connect(**DB_CONFIG)
         return conn
@@ -25,7 +22,7 @@ def get_connection():
 
 
 def close(conn, cursor=None):
-    """Safely close cursor and connection."""
+    # Safely close cursor and connection.
     if cursor:
         cursor.close()
     if conn and conn.is_connected():
