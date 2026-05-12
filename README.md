@@ -153,9 +153,3 @@ Welcome, admin! Role: ADMIN
 - **Referential Integrity** — `ON DELETE CASCADE` foreign keys
 
 ---
-
-## Author
-
-**Ayushi Nishita Ekka**  
-BIT Mesra — CSE, 2023–2027  
-[GitHub](https://github.com/Yushi7) | [LinkedIn](https://www.linkedin.com/in/ayushi-nishita-ekka-81340b2a6/)
